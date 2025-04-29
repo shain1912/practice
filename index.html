@@ -4,19 +4,268 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>HTML + CSS</title>
+    <title>AI Generation Hub</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header></header>
-    <div class="container">
-      <main>
-        <h1>Know your code</h1>
-        <p>Use our service to ensure that your coding is the best it can be.</p>
+    <div class="app-container">
+      <!-- Sidebar with tabs -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <button class="new-chat-btn">+ New Chat</button>
+        </div>
 
-        <a href="#">Start coding</a>
+        <div class="sidebar-tabs">
+          <div class="tab active" data-tab="chat" title="Chat">
+            <span class="tab-icon">💬</span>
+          </div>
+          <div class="tab" data-tab="image" title="Image Generation">
+            <span class="tab-icon">🎨</span>
+          </div>
+          <div class="tab" data-tab="video" title="Video Generation">
+            <span class="tab-icon">🎥</span>
+          </div>
+          <div class="tab" data-tab="voice" title="Voice Generation">
+            <span class="tab-icon">🔊</span>
+          </div>
+        </div>
+
+        <div class="tab-content">
+          <!-- Chat tab content -->
+          <div class="tab-pane active" id="chat-tab">
+            <div class="threads-list">
+              <!-- Chat threads will be dynamically added here -->
+              <div class="thread-item">
+                <span class="thread-icon">💭</span>
+                <span class="thread-title" contenteditable="true"
+                  >New Chat</span
+                >
+                <div class="thread-actions">
+                  <button class="thread-action-btn">...</button>
+                  <div class="thread-dropdown">
+                    <div class="thread-dropdown-item rename">
+                      <span class="item-icon">✏️</span>
+                      <span class="item-text">Rename</span>
+                    </div>
+                    <div class="thread-dropdown-item delete">
+                      <span class="item-icon">🗑️</span>
+                      <span class="item-text">Delete</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image tab content -->
+          <div class="tab-pane" id="image-tab">
+            <div class="generation-list">
+              <div class="generation-item">
+                <span class="item-icon">🖼️</span>
+                <span class="item-name">Stable Diffusion</span>
+              </div>
+              <!-- More image generation options can be added here -->
+            </div>
+          </div>
+
+          <!-- Video tab content -->
+          <div class="tab-pane" id="video-tab">
+            <div class="generation-list">
+              <div class="generation-item">
+                <span class="item-icon">🎬</span>
+                <span class="item-name">Haliuo.ai</span>
+              </div>
+              <!-- More video generation options can be added here -->
+            </div>
+          </div>
+
+          <!-- Voice tab content -->
+          <div class="tab-pane" id="voice-tab">
+            <div class="generation-list">
+              <div class="generation-item">
+                <span class="item-icon">🗣️</span>
+                <span class="item-name">ElevenLabs</span>
+              </div>
+              <!-- More voice generation options can be added here -->
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main content area -->
+      <main class="main-content">
+        <!-- Chat UI -->
+        <div class="content-pane active" id="chat-content">
+          <div class="chat-container">
+            <div class="chat-header">
+              <div class="model-selector-container">
+                <button class="model-select-btn">
+                  <span class="model-icon">🤖</span>
+                  <span class="selected-model">GPT-4</span>
+                  <span class="dropdown-arrow">▼</span>
+                </button>
+                <div class="model-dropdown">
+                  <div class="model-group">
+                    <div class="model-group-header">OpenAI</div>
+                    <div class="model-option" data-model="gpt4">
+                      <span class="model-icon">🟣</span>
+                      <div class="model-info">
+                        <div class="model-name">GPT-4</div>
+                        <div class="model-description">
+                          Most capable model, best at logic and creativity
+                        </div>
+                      </div>
+                    </div>
+                    <div class="model-option" data-model="gpt35">
+                      <span class="model-icon">🔵</span>
+                      <div class="model-info">
+                        <div class="model-name">GPT-3.5</div>
+                        <div class="model-description">
+                          Faster responses, good for most tasks
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="model-group">
+                    <div class="model-group-header">Anthropic</div>
+                    <div class="model-option" data-model="claude2">
+                      <span class="model-icon">🟡</span>
+                      <div class="model-info">
+                        <div class="model-name">Claude 2</div>
+                        <div class="model-description">
+                          Excellent at analysis and coding
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="model-group">
+                    <div class="model-group-header">Others</div>
+                    <div class="model-option" data-model="perplexity">
+                      <span class="model-icon">🟢</span>
+                      <div class="model-info">
+                        <div class="model-name">Perplexity</div>
+                        <div class="model-description">
+                          Great for real-time information
+                        </div>
+                      </div>
+                    </div>
+                    <div class="model-option" data-model="deepseek">
+                      <span class="model-icon">🔴</span>
+                      <div class="model-info">
+                        <div class="model-name">DeepSeek</div>
+                        <div class="model-description">
+                          Specialized in code generation
+                        </div>
+                      </div>
+                    </div>
+                    <div class="model-option" data-model="grok">
+                      <span class="model-icon">⚫</span>
+                      <div class="model-info">
+                        <div class="model-name">Grok</div>
+                        <div class="model-description">
+                          Real-time knowledge with wit
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="user-menu-container">
+                <button class="user-menu-btn">
+                  <span class="user-icon">👤</span>
+                </button>
+                <div class="user-dropdown">
+                  <div class="user-dropdown-item">
+                    <span class="item-icon">⚙️</span>
+                    <span class="item-text">Settings</span>
+                  </div>
+                  <div class="user-dropdown-item">
+                    <span class="item-icon">🚪</span>
+                    <span class="item-text">Log out</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="chat-messages">
+              <!-- Messages will be dynamically added here -->
+            </div>
+            <div class="input-container">
+              <textarea
+                class="message-input"
+                placeholder="Send a message..."
+                rows="1"
+              ></textarea>
+              <button class="send-btn">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Generation UI -->
+        <div class="content-pane" id="video-content">
+          <div class="video-generation-container">
+            <!-- Left Section -->
+            <div class="video-input-panel">
+              <div class="model-selector-container">
+                <div class="model-option active" data-model="i2v">
+                  <span class="model-icon">🎬</span>
+                  <span class="model-name">I2V</span>
+                </div>
+                <div class="model-option" data-model="t2v">
+                  <span class="model-icon">🎥</span>
+                  <span class="model-name">T2V</span>
+                </div>
+                <div class="model-option" data-model="s2v">
+                  <span class="model-icon">📹</span>
+                  <span class="model-name">S2V</span>
+                </div>
+              </div>
+
+              <div class="reference-upload">
+                <div class="upload-area">
+                  <div class="upload-placeholder">
+                    <span class="upload-icon">🖼️</span>
+                    <p>Drag / Paste / Click to upload an image</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="prompt-section">
+                <div class="prompt-container">
+                  <textarea
+                    class="video-prompt-input"
+                    placeholder="You can enhance camera movement by inputting natural language or inserting instructions..."
+                    rows="4"
+                  ></textarea>
+                </div>
+
+                <div class="generation-controls">
+                  <div class="quantity-control">
+                    <label>Quantity:</label>
+                    <div class="quantity-input">
+                      <button class="quantity-btn minus">-</button>
+                      <input type="number" value="1" min="1" max="4" />
+                      <button class="quantity-btn plus">+</button>
+                    </div>
+                  </div>
+                  <button class="generate-btn">🎬 Create</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="video-preview-panel">
+              <div class="preview-header">
+                <span>Generations will appear here</span>
+                <button class="view-guide-btn">View guide</button>
+              </div>
+              <div class="preview-area">
+                <!-- Generated videos will appear here -->
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
-    <footer></footer>
+    <script src="script.js"></script>
   </body>
 </html>
